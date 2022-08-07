@@ -26,7 +26,7 @@ export class App extends Component {
       this.setState({ loading: true });
       this.dataRequest();
     }
-  }
+  };
 
   async dataRequest() {
     const { page, query } = this.state;
@@ -35,10 +35,12 @@ export class App extends Component {
       this.setState(prevState => ({
         data: [...prevState.data, ...data.hits],
         totalHits: data.totalHits,
-        loading: false,
+        loading: true,
       }));
     } catch (error) {
       alert('error');
+    } finally {
+      this.setState({ loading: false });
     }
   };
 
@@ -77,9 +79,9 @@ export class App extends Component {
 
         {loading === true && (
           <div className="loader">
-            <Watch 
-             color="#3f51b5"
-             ariaLabel="watch"/>
+            <Watch
+              color="#3f51b5"
+              ariaLabel="watch" />
           </div>
         )}
         {totalPage > page && <Button onClick={this.btnLoad} />}
