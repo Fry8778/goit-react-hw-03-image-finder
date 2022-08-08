@@ -44,7 +44,7 @@ export class App extends Component {
     }
   };
 
-  onSubmit = async query => {
+  onSubmit = query => {
     if (this.state.query === query && this.state.page === 1) return;
     this.setState({ query, data: [], page: 1, totalHits: null });
   };
