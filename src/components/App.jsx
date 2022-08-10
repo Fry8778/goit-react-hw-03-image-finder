@@ -30,12 +30,12 @@ export class App extends Component {
 
   async dataRequest() {
     const { page, query } = this.state;
+    const data = await api(query, page);
     try {
-      const data = await api(query, page);
       this.setState(prevState => ({
         data: [...prevState.data, ...data.hits],
         totalHits: data.totalHits,
-        loading: true,
+        loading: false,
       }));
     } catch (error) {
       alert('error');
