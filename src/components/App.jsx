@@ -21,7 +21,6 @@ export class App extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { query, page } = this.state;
-
     if (prevState.query !== query || prevState.page !== page) {
       this.setState({ loading: true });
       this.dataRequest();
